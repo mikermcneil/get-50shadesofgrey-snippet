@@ -1,0 +1,25 @@
+{
+    "name": "fifty-shades-of-dyspepsia",
+    "version": "0.0.0",
+    "description": "Apep Fifty Shades of Gray text generator.",
+    "author": "Matt Bierner",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattbierner/fifty-shades-of-dyspepsia.git"
+    },
+    "keywords": [
+        "Apep",
+        "text",
+        "dada engine",
+        "generator"],
+
+    "main": "index.js",
+   
+    "dependencies": {
+        "apep": ">=1.2.0",
+	"apep-std-transformations": "^0.1.0",
+        "apep-std-vars": "^0.0.0",
+        "apep-md": "^0.0.1"
+    }
+}
