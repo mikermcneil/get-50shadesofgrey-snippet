@@ -17,7 +17,7 @@
     "main": "index.js",
    
     "dependencies": {
-        "apep": ">=1.2.0",
+        "apep": ">=1.3.0",
 	"apep-std-transformations": "^0.1.0",
         "apep-std-vars": "^0.0.0",
         "apep-md": "^0.0.1"
