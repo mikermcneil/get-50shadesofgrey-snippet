@@ -1,9 +1,9 @@
 /**
     Fifty Shades of Gray Excerpt Generator for Apep
-    
+
     Grammar ported from: https://github.com/lisawray/fiftyshades
 */
-const pep = require('apep');
+const pep = require('@sailshq/apep');
 const pep_trans = require('apep-std-transformations');
 const pep_vars = require('apep-std-vars');
 const md = require('apep-md');
@@ -25,36 +25,36 @@ const excerpt = pep.declare(() =>
 	        [pep.opt(confirmation), heTouchesMeGently],
 	        paragraph,
 	        rParagraph),
-	
+
         md.paragraphs(
 	        rParagraph,
 	        paragraph),
-	
+
 	    md.paragraphs(
 	        [interjection, ". That ", singularAbstractNoun, "!"],
 	        remark,
             paragraph,
             rParagraph),
-	
+
 	    md.paragraphs(
 	        [interrogative, statementOfNervousness],
 	        paragraph,
 	        fetishParagraph,
 	        rParagraph),
-	
+
 	    md.paragraphs(
 	        interrogative,
 	        affirmation,
 	        confirmation,
 	        command,
 	        paragraph),
-	
+
 	    md.paragraphs(
             paragraph,
 	        order,
 	        fetishParagraph,
 	        [remark, rParagraph])));
-	
+
 // PG-rated paragraph
 const paragraph = pep.declare(() =>
     pep.choice(
@@ -102,7 +102,7 @@ const statementOfFetishObj = pep.declare(() =>
     pep.choice(
 	    ["His ", fetishObj, " ", isPositioned(fetishObj), " ",
 	        onTopOf(fetishObj), ". "],
-	
+
 	    [capitalize(demonstrativePronoun(fetishObj)), " ",
 	        fetishObj, "! We've never used ", fetishArticle, " before. "]));
 
@@ -110,9 +110,9 @@ const statementOfFetishObj3 = pep.declare(() =>
     pep.choice(
 	    [exclamation, ", he's so ",
 	        pep.choice("complicated", "hard to please", "fucked-up"), ". "],
-	
+
 	    ["If only it didn't take a contract and ", fetishArticle, " to ", pep.choice("please", "satisfy"), " him. "],
-	
+
 	    [capitalize(badImNervous),
 	        ". I worry, again, that I'm not enough for him. "]));
 
@@ -125,15 +125,15 @@ const statementOfFetishObj2 = pep.declare(() =>
 	    "What on earth does he have in store for me? " ,
 	    ["His ", pep.choice("fingers brush", "eyes glance over"), " the ",
 	        shortForm(fetishObj), ", and ", imTurnedOn, ". "]));
-	
+
 const statementOfNervousness = pep.declare(() =>
 	pep.choice(
 	    ["I glance ", nervousAdv, " at the ",
 	        pep.choice("bed", "doorway", "playroom"), ". "],
-	
+
 	    ["I ", shiver, " ", nervousAdv,
 	        ", excitement blooming deep inside me. "],
-	
+
         [capitalize(imNervous), ". "]));
 
 const imNervous = pep.choice(
@@ -149,7 +149,7 @@ const badImNervous = pep.choice(
 	"my mouth goes dry",
 	"I'm suddenly flooded with despair");
 
-const nervousAdv = pep.choice("nervously", "anxiously");	
+const nervousAdv = pep.choice("nervously", "anxiously");
 
 ////////////////////////////////////////////////////////////////////////////////
 // Fetish Object
@@ -166,7 +166,7 @@ const demonstrativePronoun = pep_trans.dicti({
 	"leather strap": "that",
 	"rope": "that",
 });
-	
+
 const shortForm = pep_trans.dicti({
 	"handcuffs": "cuffs",
 	"nipple clamps": "clamps",
@@ -205,7 +205,7 @@ const onTopOf = pep_trans.dicti({
 	"leather strap": "the stack of books on his desk",
 	"rope": "the foot of the bed"
 });
-	
+
 ////////////////////////////////////////////////////////////////////////////////
 // Communication
 
@@ -244,7 +244,7 @@ const conf = pep.choice(
 	"This will be hard, but I won't hurt you",
 	"Remember, I'll never hurt you",
 	"This is not going to hurt. It will be intense");
-	
+
 const confirmation = pep.declare(() =>
     pep.choice(
         [capitalize(smile), ". '", conf, ".' "],
@@ -279,11 +279,11 @@ const interrogative = pep.declare(() =>
     pep.choice(
 	    ["'", question, ",' ", heSays, ", ", compoundAdj, ", and ",
 	        imTurnedOn, " as " , imTurnedOn, ". "],
-	
+
 	    ["'", question, ",' ", heSays, ". ",
 	        capitalize(compoundSentence),
 	        ", and ", imTurnedOn, ". "],
-			
+
 	    ["'", question, ",' ", heSays, " ", compoundAdv, ", ",
 	        turningMeOn, ". "]));
 
@@ -352,7 +352,7 @@ const imTurnedOn = pep.choice(
 	"a pulse of warmth pools inside me",
 	"I tingle ... everywhere",
 	"everything south of my waist tightens deliciously");
-	
+
 const imTurnedOnR = pep.choice(
 	"desire courses through my blood",
 	"desire seizes me with a vengeance",
@@ -384,12 +384,12 @@ const turningMeOn = pep.choice(
 	"warmth pooling below my waist",
 	"anticipation and anxiety charging through me",
 	"my insides liquefying");
-	
+
 const turningMeOnR = pep.choice(
 	"making me writhe",
 	"making me yearn for him",
 	"pleasure lancing directly to my groin");
-	
+
 const iMoan = pep.choice(
     ["I moan", pep.opt(" again "),
         pep.choice(" into his mouth", " against his lips", pep.empty)],
@@ -430,7 +430,7 @@ const kissSentence1 = pep.declare(() =>
     pep.choice(
 	    [movingToKissMe, ", ", heKissesMe, ", ", kissAdj, ", ",
 	        turningMeOn, ". "],
-	    
+
 	    [heMovesToKissMe, ", and ", imNervous, ". ",
 	        capitalize(heKissesMe), commaKissAdj, ". "]));
 
@@ -443,11 +443,11 @@ const kissSentence2 = pep.declare(() =>
     pep.choice(
         [capitalize(heKissesMe), ", ",
             kissAdj, commaTurningMeOn, ". "],
-        
+
         [capitalize(heKissesMe), ", and ", imTurnedOn, ". "],
-        
+
         [capitalize(kissAdjComma), heKissesMe, ". "]));
-	
+
 const kissAdjComma = pep.declare(() =>
     pep.many1([kissAdj, ", ", ]));
 
@@ -455,7 +455,7 @@ const commaTurningMeOn = pep.declare(() =>
     pep.weightedChoice([
         [1, [", ", turningMeOn]],
         [2, [", ", turningMeOn, ", ", turningMeOn]]]));
-	
+
 //Dirty kiss!
 const kissSentenceR = pep.declare(() =>
 	pep.choice(
@@ -463,7 +463,7 @@ const kissSentenceR = pep.declare(() =>
 	    [capitalize(heKissesMe), ", and ", imTurnedOnR, ". "],
 	    [capitalize(dirtyKissAdjComma), heKissesMe, ". "]));
 
-//Use one, two, or three phrases.		
+//Use one, two, or three phrases.
 const dirtyKissAdjComma = pep.declare(() =>
     pep.choice(
         [dirtyKissAdj, ", "],
@@ -484,7 +484,7 @@ const heMovesToKissMe = pep.seq("He ",
 		"lifts my chin",
 		["runs his nose along my ", pep.choice("jaw", "forehead")],
 		"leans in"));
-		
+
 const heKissesMe = pep.choice(
 	["he plants a soft ", pep.opt("wet "), "kiss on my lips"],
 	["he softly kisses my ",
@@ -506,7 +506,7 @@ const dirtyKissAdj = pep.choice(
     "exploring",
     "frantic",
     "his eyes wild");
-	
+
 const dirtyKissAdv = pep.choice(
 	"savagely",
 	"frantically",
@@ -530,7 +530,7 @@ const holdingMyHead = pep.declare(() =>
 		["holding me ", pep.choice("gently ", "firmly "), "in place"],
 		"pulling my head back",
 		"lifting his other hand to cradle my face"),
-	
+
 	    pep.opt([" as we kiss", pep.opt([", ", dirtyKissAdv])])));
 
 const playingWithHair = pep.choice(
@@ -580,10 +580,10 @@ const heTouchesMeGently = pep.declare(() =>
                 ["His fingers ", pep.choice("brush", "graze")],
                 ["He ", pep.choice("touches", "cups")]),
              " my face gently"),
-        
+
         ["He caresses my ", pep.choice("cheek", "hair"), ", gazing at me ",
             pep.choice("lovingly", "tenderly")]),
-            
+
     ", ", turningMeOn, ". "));
 
 const t1 = capitalize(heTouchesMe);
@@ -619,7 +619,7 @@ const actsForcefully = pep.choice(
 const shovesMe = pep.seq(
     pep.choice("shoves", "pushes", "slams"),
     " me against the ", wall);
-		
+
 const shovingMe = pep.seq(
     pep.choice("shoving", "pushing", "slamming"),
     " me against the ", wall);
@@ -634,10 +634,10 @@ const forcefulSentence = pep.declare(() =>
     pep.choice(
         [actionPrefix, ", he ", actsForcefully, ", ", shovingMe, ". ",
             capitalize(observation), commaTurningMeOnR, ". "],
-    
+
         [actionPrefix, ", he ", shovesMe, ". ", hePinsMe, ", and ",
             observation, ". "]));
-    
+
 ////////////////////////////////////////////////////////////////////////////////
 // Transition Sentences
 
@@ -679,7 +679,7 @@ const interjection = pep.choice(
     "Holy shit", "Holy crap", "Holy cow", "Holy hell", "Crap", "Shit", "Oh my",
 	"I want him so badly",
 	"Oh, I want this");
-	
+
 const shiver = pep.choice("tremble", "shiver");
 const shivered = pep.seq(shiver, "ed");
 
@@ -690,9 +690,9 @@ const kiss = pep.choice("kiss is", "lips are");
 
 const musicAdjective = pep.choice("haunting", "sultry", "sensual", "pulsing");
 
-const composer = pep_vars.store('composer', 
+const composer = pep_vars.store('composer',
     pep.choice("Kings of Leon", "Tallis", "Miley Cyrus", "Justin Bieber"));
-    
+
 const musicReaction = pep.choice("unexpected", "appropriate");
 
 const musicSentence = pep.choice(
@@ -703,7 +703,7 @@ const musicSentence = pep.choice(
 	        " waft through the air",
 	        " drift through the headphones he put on me"),
 	    ". "]);
-	    
+
 const musicSentence2 = pep.choice(
     ["How ", musicReaction, ". "],
 	"He always puts songs on repeat in here. ",
